@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub README to HTML Converter</title>
+    <style> 
+        body { font-family: sans-serif; }
+        #output { margin-top: 20px; border: 1px solid #ccc; padding: 20px; }
+    </style>
+</head>
+<body>
+    <h1>GitHub README to HTML</h1>
+    <p>Prepend your standard GitHub README URL with <b>http://54.144.37.189/</b> to view it as HTML.</p>
+    <p><b>Example:</b> If the README URL is https://github.com/torvalds/linux/blob/master/README.md,  use  http://54.144.37.189/https://github.com/torvalds/linux/blob/master/README.md </p>
+    <div id="output"></div>
+
+    <script>
+        const currentURL = window.location.href;
+        if (currentURL.startsWith('http://54.144.37.189/')) { 
+            const readmeURL = currentURL.slice('http://54.144.37.189/'.length); 
+            processReadme(readmeURL); 
+        }
+
+        function processReadme(readmeURL) {
+            fetchRawReadmeURL(readmeURL) 
+                .then(rawReadmeURL => {
+                    fetch('convert.php', {
+                        method: 'POST',
+                        body: new URLSearchParams({ url: rawReadmeURL })
+                    })
+                    .then(response => response.text())
+                    .then(html => document.getElementById('output').innerHTML = html)
+                    .catch(error => console.error('Error:', error)); 
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function fetchRawReadmeURL(readmeURL) {
+            const urlParts = readmeURL.split('/');
+            const user = urlParts[3];
+            const repo = urlParts[4];
+            const branch = urlParts.includes('blob') ? urlParts[6] : 'main'; 
+
+            const rawReadmeURL = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/readme.md`;
+            return Promise.resolve(rawReadmeURL); 
+        }
+    </script>
+</body>
+</html>
