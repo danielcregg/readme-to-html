@@ -20,7 +20,7 @@ async function fetchRawReadmeURL(readmeURL) {
     const repo = urlParts[4];
     const branch = urlParts.includes('blob') ? urlParts[6] : 'main';
 
-    const rawReadmeURL = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/readme.md`;
+    const rawReadmeURL = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/README.md`;
     return rawReadmeURL;
 }
 
