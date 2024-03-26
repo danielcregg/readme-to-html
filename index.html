@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>GitHub README to HTML Converter</title>
+    <title>GitHub README to HTML</title>
     <style>
         body {
             font-family: sans-serif;
@@ -23,37 +23,7 @@
         http://54.144.37.189/https://github.com/torvalds/linux/blob/master/README.md </p>
     <div id="output"></div>
 
-    <script>
-        const currentURL = window.location.href;
-        if (currentURL.startsWith('http://54.144.37.189/')) {
-            const readmeURL = currentURL.slice('http://54.144.37.189/'.length);
-            processReadme(readmeURL);
-        }
-
-        function processReadme(readmeURL) {
-            fetchRawReadmeURL(readmeURL)
-                .then(rawReadmeURL => {
-                    fetch('convert.php', {
-                        method: 'POST',
-                        body: new URLSearchParams({ url: rawReadmeURL })
-                    })
-                        .then(response => response.text())
-                        .then(html => document.getElementById('output').innerHTML = html)
-                        .catch(error => console.error('Error:', error));
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        function fetchRawReadmeURL(readmeURL) {
-            const urlParts = readmeURL.split('/');
-            const user = urlParts[3];
-            const repo = urlParts[4];
-            const branch = urlParts.includes('blob') ? urlParts[6] : 'main';
-
-            const rawReadmeURL = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/readme.md`;
-            return Promise.resolve(rawReadmeURL);
-        }
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
