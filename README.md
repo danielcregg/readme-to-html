@@ -5,7 +5,7 @@
 
 ## Run the following command to install these files:
 ```bash
-sudo apt -yqqq install composer && sudo composer require erusev/parsedown -n && sudo wget -Nqq https://raw.githubusercontent.com/danielcregg/readme-to-html/main/index.html https://raw.githubusercontent.com/danielcregg/readme-to-html/main/convert.php -P /var/www/html/
+sudo apt -yqqq install composer && sudo composer require erusev/parsedown -n && sudo wget -Nqq https://raw.githubusercontent.com/danielcregg/readme-to-html/main/index.html https://raw.githubusercontent.com/danielcregg/readme-to-html/main/convert.php https://raw.githubusercontent.com/danielcregg/readme-to-html/main/readmeProcessor.js -P /var/www/html/
 ```
 
 GitHub README to HTML
