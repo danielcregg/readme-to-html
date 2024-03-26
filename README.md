@@ -11,4 +11,4 @@ sudo apt -yqqq install composer && sudo composer require erusev/parsedown -n && 
 GitHub README to HTML
 Prepend your standard GitHub README URL with http://yourserverip/ to view it as HTML.
 
-Example: If the README URL is https://github.com/torvalds/linux/blob/master/readme.md, use http://yourserverip/https://github.com/torvalds/linux/blob/master/readme.md
+Example: If the README URL is https://github.com/microsoft/vscode/blob/main/README.md, use http://yourserverip/https://github.com/microsoft/vscode/blob/main/README.md

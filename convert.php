@@ -2,16 +2,16 @@
 require_once 'vendor/autoload.php'; 
 
 // Check if URL is set
-if(isset($_POST['url'])) {
+if(isset($_GET['url'])) {
     // Validate URL
-    if (filter_var($_POST['url'], FILTER_VALIDATE_URL) === false) {
+    if (filter_var($_GET['url'], FILTER_VALIDATE_URL) === false) {
         http_response_code(400);
         echo "Error: Invalid URL.";
         exit;
     }
 
     // Fetch README contents
-    $readme_content = @file_get_contents($_POST['url']);
+    $readme_content = @file_get_contents($_GET['url']);
 
     // Check if fetching was successful
     if ($readme_content === false) {
