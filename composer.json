@@ -1,0 +1,9 @@
+{
+    "name": "danielcregg/readme-to-html",
+    "description": "Convert GitHub README files to HTML",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "erusev/parsedown": "^1.7"
+    }
+}
